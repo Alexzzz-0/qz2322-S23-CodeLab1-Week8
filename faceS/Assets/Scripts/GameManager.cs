@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI question;
-    public TextMeshProUGUI answer1;
-    public TextMeshProUGUI answer2;
-    public TextMeshProUGUI answer3;
+    public TextMeshProUGUI button1;
+    public TextMeshProUGUI button2;
+    public TextMeshProUGUI button3;
+    public TextMeshProUGUI answers;
 
     public ScriptableObjects object1;
     public ScriptableObjects object2;
@@ -24,56 +27,42 @@ public class GameManager : MonoBehaviour
     private int qA = 0;
     
     //create a list to hold all question A blanks
-    private List<int> questionA = new List<int>();
-    //an array to hold all the location possibility
+    private List<string> questionA = new List<string>();
+    //an array to hold all the question B blanks (location possibility)
     private string[] questionB = new string[] { "above", "under", "left to", "right to" };
     private string[] organ = new string[] { "left eye", "left eye bow", "right eye", "right eye bow", "nose", "mouth" };
     private void Start()
     {
-        for (int i = 0; i < 6; i++)
-        {
-            questionA.Add(i);
-        }
+
+        questionA.Add("left eye bow");
+        questionA.Add("right eye bow");
+        questionA.Add("left eye");
+        questionA.Add("right eye");
+        questionA.Add("left ear");
+        questionA.Add("right ear");
+        questionA.Add("nose");
+        questionA.Add("mouth");
     }
     
     //each time press the button
     //generate a new one
-    int qAindex;
     string qAString;
     private string qBString;
+    private int questionIndex = 0;
     
     public void choose()
     {
-        //create a list to hold all the qustion A blank possiblities
+
+        //align which question it is
+        questionIndex++;
+        
+        //randomly choose a string "qAindex" from question A blanks list
         //to ensure that every organ is mentioned once in the game
         //left eye, right eye...
         qArandom = Random.Range(0,questionA.Count-1);
-        qAindex = questionA[qArandom];
+        qAString = questionA[qArandom];
         
-        switch (qAindex)
-        {
-            case 0:
-                qAString = "left eye";
-                break;
-            case 1:
-                qAString = "left eye bow";
-                break;
-            case 2:
-                qAString = "right eye";
-                break;
-            case 3:
-                qAString = "right eye bow";
-                break;
-            case 4:
-                qAString = "nose";
-                break;
-            case 5:
-                qAString = "mouth";
-                break;
-        }
-
-        //create an array of above, under, left, right
-        //randomly choose one every time we press the button
+        //randomly choose one direction (up/left/down/right) every time we press the button
         int qBRandom;
         qBRandom = Random.Range(0, questionB.Length - 1);
         qBString = questionB[qBRandom];
@@ -81,39 +70,47 @@ public class GameManager : MonoBehaviour
         //display the question with A and B blank
         question.text = "What is " + qBString + " the " + qAString;
         
+        //wrote the question into file
+        answers.text += "\n" + questionIndex + question.text;
+        
         //remove the A blank that has been asked so it will not overlap
         questionA.Remove(questionA[qArandom]);
 
         //randomly choose an organ as the answer
-        int answerIndex;
-        answerIndex = Random.Range(0, organ.Length - 1);
-        answer1.text = organ[answerIndex];
-        answerIndex = Random.Range(0, organ.Length - 1);
-        answer2.text = organ[answerIndex];
-        answerIndex = Random.Range(0, organ.Length - 1);
-        answer3.text = organ[answerIndex];
+        int answerRandomIndex;
+        
+        answerRandomIndex = Random.Range(0, questionA.Count - 1);
+        button1.text = questionA[answerRandomIndex];
+        questionA.RemoveAt(answerRandomIndex);
+        answerRandomIndex = Random.Range(0, questionA.Count - 1);
+        button2.text = questionA[answerRandomIndex];
+        questionA.RemoveAt(answerRandomIndex);
+        answerRandomIndex = Random.Range(0, questionA.Count - 1);
+        button3.text = questionA[answerRandomIndex];
+        questionA.Add(button1.text);
+        questionA.Add(button2.text);
         
         //write into file
         int objectIndex = 0;
         switch (objectIndex)
         {
             case 1:
-                object1.index = qAindex;
+                //object1.index = qAString;
                 break;
             case 2:
-                object2.index = qAindex;
+                //object2.index = qAindex;
                 break;
             case 3:
-                object3.index = qAindex;
+                //object3.index = qAindex;
                 break;
             case 4:
-                object4.index = qAindex;
+                //object4.index = qAindex;
                 break;
             case 5:
-                object5.index = qAindex;
+                //object5.index = qAindex;
                 break;
             case 6:
-                object6.index = qAindex;
+                //object6.index = qAindex;
                 break;
         }
 
