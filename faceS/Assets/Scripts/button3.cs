@@ -11,5 +11,6 @@ public class button3 : MonoBehaviour
     public void WroteButton3()
     {
         answersFile.text += "--" + answer3.text;
+        GameManager._instance.choseAnswer = answer3.text;
     }
 }

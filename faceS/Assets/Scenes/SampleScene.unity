@@ -208,9 +208,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 289715663}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: choose
+      - m_Target: {fileID: 34542021}
+        m_TargetAssemblyTypeName: button1, Assembly-CSharp
+        m_MethodName: WriteButton1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -220,9 +220,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 34542021}
-        m_TargetAssemblyTypeName: button1, Assembly-CSharp
-        m_MethodName: WriteButton1
+      - m_Target: {fileID: 289715663}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: choose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -513,6 +513,15 @@ MonoBehaviour:
   object4: {fileID: 11400000, guid: 6c066a5daf9d229469adbc066d3d5221, type: 2}
   object5: {fileID: 11400000, guid: 74a1c252b6bac3f489faec0610ad996a, type: 2}
   object6: {fileID: 11400000, guid: 0020e102976210b49981dfb68529511a, type: 2}
+  leftEye: {fileID: 21300000, guid: f1f28c3c5505e834d8c1f7cf977fd7f7, type: 3}
+  leftEyeBow: {fileID: 21300000, guid: def4273b184ac8c4a9ea1d1ab35f398d, type: 3}
+  rightEye: {fileID: 21300000, guid: 87a9610c9644c3c4a8ee0f953373491c, type: 3}
+  rightEyeBow: {fileID: 21300000, guid: 88dae692c441a994c8141743ad8ce9b7, type: 3}
+  leftEar: {fileID: 21300000, guid: 1e3ce651fb0c684409846148d8bb8993, type: 3}
+  rightEar: {fileID: 21300000, guid: a281512bd409a6b4b8e428ac36316e76, type: 3}
+  nose: {fileID: 21300000, guid: 6b599e0772002874090086907a59215b, type: 3}
+  mouth: {fileID: 21300000, guid: 97bbb2def2473994e854e20b77e1faf2, type: 3}
+  choseAnswer: 
 --- !u!4 &289715664
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,9 +1179,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 289715663}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: choose
+      - m_Target: {fileID: 1800576089}
+        m_TargetAssemblyTypeName: button3, Assembly-CSharp
+        m_MethodName: WroteButton3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1182,9 +1191,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1800576089}
-        m_TargetAssemblyTypeName: button3, Assembly-CSharp
-        m_MethodName: WroteButton3
+      - m_Target: {fileID: 289715663}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: choose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1244,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cea746150b0a0b40ad9baad02092bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answersFile: {fileID: 373454600}
+  answersFile: {fileID: 1926171621}
   answer3: {fileID: 373454600}
 --- !u!1 &1926171619
 GameObject:
@@ -1304,7 +1313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: answers
+  m_text: Questions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1550,9 +1559,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 289715663}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: choose
+      - m_Target: {fileID: 2004900648}
+        m_TargetAssemblyTypeName: button2, Assembly-CSharp
+        m_MethodName: WroteButton2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1562,9 +1571,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2004900648}
-        m_TargetAssemblyTypeName: button2, Assembly-CSharp
-        m_MethodName: WroteButton2
+      - m_Target: {fileID: 289715663}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: choose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -21,11 +21,25 @@ public class GameManager : MonoBehaviour
     public ScriptableObjects object4;
     public ScriptableObjects object5;
     public ScriptableObjects object6;
-    
+
+    [SerializeField] private Sprite leftEye;
+    [SerializeField] private Sprite leftEyeBow;
+    [SerializeField] private Sprite rightEye;
+    [SerializeField] private Sprite rightEyeBow;
+    [SerializeField] private Sprite leftEar;
+    [SerializeField] private Sprite rightEar;
+    [SerializeField] private Sprite nose;
+    [SerializeField] private Sprite mouth;
+    private Sprite _sprite;
+
+    private ScriptableObjects _object;
 
     private int qArandom = 0;
-    private int qA = 0;
-    
+
+    public string choseAnswer;
+
+    public static GameManager _instance;
+
     //create a list to hold all question A blanks
     private List<string> questionA = new List<string>();
     //an array to hold all the question B blanks (location possibility)
@@ -33,6 +47,7 @@ public class GameManager : MonoBehaviour
     private string[] organ = new string[] { "left eye", "left eye bow", "right eye", "right eye bow", "nose", "mouth" };
     private void Start()
     {
+        _instance = this;
 
         questionA.Add("left eye bow");
         questionA.Add("right eye bow");
@@ -42,6 +57,10 @@ public class GameManager : MonoBehaviour
         questionA.Add("right ear");
         questionA.Add("nose");
         questionA.Add("mouth");
+
+        _object = object1;
+        _sprite = leftEye;
+        choseAnswer = null;
     }
     
     //each time press the button
@@ -49,6 +68,8 @@ public class GameManager : MonoBehaviour
     string qAString;
     private string qBString;
     private int questionIndex = 0;
+    
+    
     
     public void choose()
     {
@@ -62,7 +83,8 @@ public class GameManager : MonoBehaviour
         qArandom = Random.Range(0,questionA.Count-1);
         qAString = questionA[qArandom];
         
-        //randomly choose one direction (up/left/down/right) every time we press the button
+        //randomly choose one direction (up/left/down/right
+        //) every time we press the button
         int qBRandom;
         qBRandom = Random.Range(0, questionB.Length - 1);
         qBString = questionB[qBRandom];
@@ -77,6 +99,8 @@ public class GameManager : MonoBehaviour
         questionA.Remove(questionA[qArandom]);
 
         //randomly choose an organ as the answer
+        //delete the element of list for now, so they won't be the same
+        //add back at the end
         int answerRandomIndex;
         
         answerRandomIndex = Random.Range(0, questionA.Count - 1);
@@ -91,32 +115,91 @@ public class GameManager : MonoBehaviour
         questionA.Add(button2.text);
         
         //write into file
-        int objectIndex = 0;
-        switch (objectIndex)
+        // _object.name = qAString;
+        // _object.location = qBString;
+        
+        
+
+        switch (questionIndex)
         {
             case 1:
-                //object1.index = qAString;
+                //object1 = _object;
+                object1.name = qAString;
+                object1.location = qBString;
+                object1.sprite = SearchImage(qAString);
+                object1.theOther = choseAnswer;
                 break;
             case 2:
-                //object2.index = qAindex;
+                //object2 = _object;
+                object2.name = qAString;
+                object2.location = qBString;
+                object2.sprite = SearchImage(qAString);
+                object2.theOther = choseAnswer;
                 break;
             case 3:
-                //object3.index = qAindex;
+                //object3 = _object;
+                object3.name = qAString;
+                object3.location = qBString;
+                object3.sprite = SearchImage(qAString);
+                object3.theOther = choseAnswer;
                 break;
             case 4:
-                //object4.index = qAindex;
+                //object4 = _object;
+                object4.name = qAString;
+                object4.location = qBString;
+                object4.sprite = SearchImage(qAString);
+                object4.theOther = choseAnswer;
                 break;
             case 5:
-                //object5.index = qAindex;
+                //object5 = _object;
+                object5.name = qAString;
+                object5.location = qBString;
+                object5.sprite = SearchImage(qAString);
+                object5.theOther = choseAnswer;
                 break;
             case 6:
-                //object6.index = qAindex;
+                //object6 = _object;
+                object6.name = qAString;
+                object6.location = qBString;
+                object6.sprite = SearchImage(qAString);
+                object6
+                    .theOther = choseAnswer;
                 break;
         }
 
-        objectIndex++;
-            
-        
+    }
+
+    Sprite SearchImage(string name)
+    {
+        switch (name)
+        {
+            case "left eye" :
+                _sprite = leftEye;
+                break;
+            case "right eye":
+                _sprite = rightEye;
+                break;
+            case "left eye bow":
+                _sprite = leftEyeBow;
+                break;
+            case "right eye bow":
+                _sprite = rightEyeBow;
+                break;
+            case "left ear":
+                _sprite = leftEar;
+                break;
+            case "right ear":
+                _sprite = rightEar;
+                break;
+            case "nose":
+                _sprite = nose;
+                break;
+            case "mouth":
+                _sprite = mouth;
+                break;
+        }
+
+        return _sprite;
     }
     
     
