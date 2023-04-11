@@ -10,6 +10,10 @@ public class button3 : MonoBehaviour
 
     public void WroteButton3()
     {
+        if (!GameManager._instance.gameRun)
+        {
+            return;
+        }
         answersFile.text += "--" + answer3.text;
         GameManager._instance.choseAnswer = answer3.text;
     }

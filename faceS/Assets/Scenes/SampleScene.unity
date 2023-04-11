@@ -513,14 +513,8 @@ MonoBehaviour:
   object4: {fileID: 11400000, guid: 6c066a5daf9d229469adbc066d3d5221, type: 2}
   object5: {fileID: 11400000, guid: 74a1c252b6bac3f489faec0610ad996a, type: 2}
   object6: {fileID: 11400000, guid: 0020e102976210b49981dfb68529511a, type: 2}
-  leftEye: {fileID: 21300000, guid: f1f28c3c5505e834d8c1f7cf977fd7f7, type: 3}
-  leftEyeBow: {fileID: 21300000, guid: def4273b184ac8c4a9ea1d1ab35f398d, type: 3}
-  rightEye: {fileID: 21300000, guid: 87a9610c9644c3c4a8ee0f953373491c, type: 3}
-  rightEyeBow: {fileID: 21300000, guid: 88dae692c441a994c8141743ad8ce9b7, type: 3}
-  leftEar: {fileID: 21300000, guid: 1e3ce651fb0c684409846148d8bb8993, type: 3}
-  rightEar: {fileID: 21300000, guid: a281512bd409a6b4b8e428ac36316e76, type: 3}
-  nose: {fileID: 21300000, guid: 6b599e0772002874090086907a59215b, type: 3}
-  mouth: {fileID: 21300000, guid: 97bbb2def2473994e854e20b77e1faf2, type: 3}
+  object7: {fileID: 11400000, guid: 608b3595b1282a04ab655e9fca61e483, type: 2}
+  object8: {fileID: 11400000, guid: c219b0397485b0d4bb34af35f73a03f8, type: 2}
   choseAnswer: 
 --- !u!4 &289715664
 Transform:

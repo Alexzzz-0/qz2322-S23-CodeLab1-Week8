@@ -10,11 +10,11 @@ using UnityEngine;
 
 public class ScriptableObjects : ScriptableObject
 {
-    public int index;
+    //public int index;
     public string name;
-    //public float x;
-    //public float y;
-    public string location;
-    public string theOther;
+    public float x;
+    public float y;
+    //public string location;
+    //public string theOther;
     public Sprite sprite;
 }
