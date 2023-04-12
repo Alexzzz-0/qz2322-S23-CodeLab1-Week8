@@ -40,12 +40,10 @@ public class GameManager : MonoBehaviour
     private string[] questionB = new string[] { "above", "under", "left to", "right to" };
     //a list to hold all the organs
     private List<string> organ = new List<string>() { "left eye", "left eye bow", "right eye", "right eye bow", "nose", "mouth","left ear","right ear"};
-
+    
+    //a 2D list to hold all the info for organ map
     private List<List<string>> OrganMap = new List<List<string>>();
     
-
-    //a map to hold the direction info of organs
-    //private string[,] organMap;
     
     private void Start()
     {
@@ -64,13 +62,12 @@ public class GameManager : MonoBehaviour
         //_object = object1;
         // _sprite = leftEye;
         choseAnswer = null;
-
+        
         InitAllScriObject();
         
     }
     
-    //each time press the button
-    //generate a new one
+  
     string qAString;
     private string qBString;
     private int questionIndex = 0;
@@ -84,15 +81,26 @@ public class GameManager : MonoBehaviour
     //triggered by button
     public void choose()
     {
+        //write the organ in question & organ in answer's position into files
         WriteIntoFile();
-
-        Form2DArray();
         
+        //check the end state of the game
+        //generate the organs in the face now
         questionIndex++;
         if (questionIndex >= 6)
         {
+            //give an random position to the organs that have never been chosen
             CheckNullFile();
+            
+            //display on the text
+            //TODO: delete this line if we have the generating function
             question.text = "The end";
+
+            //generate organs
+            GenerateOrganInFace();
+            
+            //turn gameRun to false
+            //so the scripts in the button cannot write more button text into answer column
             gameRun = false;
             return;
         }
@@ -104,6 +112,8 @@ public class GameManager : MonoBehaviour
     
     void InitAllScriObject()
     {
+        //initialize all the object's position info
+        //make them all (0,0) when game first starts
         foreach (var ScriObj in ScriDic)
         {
             ScriObj.Value.x = 0;
@@ -113,16 +123,25 @@ public class GameManager : MonoBehaviour
 
     void WriteIntoFile()
     {
+        //the first time player choose a button to start
+        //no need to write into file
         if (questionIndex == 0)
         {
             return;
         }
         
+        
         if (questionIndex == 1)
         {
+            //this is for scriptable objects:
+            //set the position of the organ in the first question as (10,10) the initial point
+            //the followings will be built around that
             ScriDic[qAString].x = 10f;
             ScriDic[qAString].y = 10f;
             
+            //this is for position map 2D list:
+            //put the organ in the first question into the 2D list as initial point
+            //the followings will be built around that
             List<string> list0 = new List<string>();
             OrganMap.Add(list0);
             list0.Add(qAString);
@@ -186,10 +205,16 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        organ.Remove(choseAnswer);
         OrganMap.Insert(0,new List<string>());
         OrganMap[0].Add(organ[0]);
         int cap = OrganMap.Count-1;
         OrganMap[cap].Add(organ[1]);
+
+        // foreach (var organ in organ)
+        // {
+        //     Debug.Log(organ);
+        // }
         
         // Debug.Log(organ[0]);
         // Debug.Log(organ[1]);
@@ -238,6 +263,7 @@ public class GameManager : MonoBehaviour
 
     void RightTo(string answerOrgan)
     {
+        //write into scriptable objects
         foreach (var dirOrgan in ScriDic)
         {
             if (dirOrgan.Value.x > qAX && dirOrgan.Value.y == qAy )
@@ -248,23 +274,26 @@ public class GameManager : MonoBehaviour
             ScriDic[answerOrgan].y = qAy;
         }
         
+        //write into 2D list
         int temp = qax + 1;
-        if (OrganMap[temp] != null)
+        if (temp>OrganMap.Count-1)
         {
+            OrganMap.Add(new List<string>());
             OrganMap[temp].Add(answerOrgan);
             qax = temp;
             qay = OrganMap[temp].Count - 1;
         }
         else
         {
-            OrganMap.Insert(temp,new List<string>());
-            OrganMap[qax].Add(answerOrgan);
+            OrganMap[temp].Add(answerOrgan);
+            qax = temp;
             qay = OrganMap[temp].Count - 1;
         }
     }
 
     void Above(string answerOrgan)
     {
+        //write into scriptable objects
         foreach (var dirOrgan in ScriDic)
         {
             if (dirOrgan.Value.y > qAy && dirOrgan.Value.x == qAX )
@@ -275,7 +304,7 @@ public class GameManager : MonoBehaviour
             ScriDic[answerOrgan].y = qAy + 1f;
         }
 
-       
+        //write into 2d list
         OrganMap[qax].Insert(qay,choseAnswer);
         
         
@@ -283,6 +312,7 @@ public class GameManager : MonoBehaviour
 
     void Under(string answerOrgan)
     {
+        //write into scriptable objects
         foreach (var dirOrgan in ScriDic)
         {
             if (dirOrgan.Value.y < qAy && dirOrgan.Value.x == qAX )
@@ -293,6 +323,7 @@ public class GameManager : MonoBehaviour
             ScriDic[answerOrgan].y = qAy - 1f;
         }
         
+        //write into 2d list
         OrganMap[qax].Insert(qay+1,choseAnswer);
     }
     
@@ -333,8 +364,11 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void Form2DArray()
+    void GenerateOrganInFace()
     {
-        
+        //according to the position information in organ map
+        //generate the organs in the face here
+   
     }
+    
 }
