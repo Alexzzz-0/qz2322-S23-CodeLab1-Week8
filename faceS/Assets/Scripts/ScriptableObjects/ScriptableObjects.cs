@@ -16,5 +16,6 @@ public class ScriptableObjects : ScriptableObject
     public float y;
     //public string location;
     //public string theOther;
-    public Sprite sprite;
+    //public Sprite sprite;
+    public GameObject organs;
 }

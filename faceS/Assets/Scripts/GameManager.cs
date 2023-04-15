@@ -364,11 +364,24 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public float startX;
+    public float startY;
+    public float gapX;
+    public float gapY;
+
     void GenerateOrganInFace()
     {
         //according to the position information in organ map
         //generate the organs in the face here
-   
+        for (int i = 0; i < OrganMap.Count; i++)
+        {
+            for (int q = 0; q < OrganMap[i].Count; q++)
+            {
+                string _name = OrganMap[i][q];
+                GameObject newObj = Instantiate(ScriDic[_name].organs);
+                newObj.transform.position = new Vector3(startX + gapX * i, startY - gapY * q);
+            }
+        }
     }
     
 }
