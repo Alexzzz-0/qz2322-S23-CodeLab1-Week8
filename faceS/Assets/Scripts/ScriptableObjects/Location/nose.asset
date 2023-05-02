@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d029a3eadfda535418b998131fb94cae, type: 3}
   m_Name: nose
   m_EditorClassIdentifier: 
-  index: 6
   name: nose
-  x: 0
-  y: 0
-  sprite: {fileID: 0}
+  x: 4
+  y: 10
+  organs: {fileID: 5097564656984793725, guid: b67f47c54d53c74459d95fe03e385445, type: 3}

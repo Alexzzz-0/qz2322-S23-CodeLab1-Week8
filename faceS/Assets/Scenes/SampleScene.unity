@@ -517,6 +517,10 @@ MonoBehaviour:
   object8: {fileID: 11400000, guid: c219b0397485b0d4bb34af35f73a03f8, type: 2}
   choseAnswer: 
   gameRun: 1
+  startX: -3.5
+  startY: 2.6
+  gapX: 3
+  gapY: 1.7
 --- !u!4 &289715664
 Transform:
   m_ObjectHideFlags: 0

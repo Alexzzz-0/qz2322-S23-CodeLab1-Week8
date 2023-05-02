@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d029a3eadfda535418b998131fb94cae, type: 3}
   m_Name: leftEyeBow
   m_EditorClassIdentifier: 
-  index: 1
   name: left eye bow
-  x: 0
-  y: 0
-  sprite: {fileID: 21300000, guid: def4273b184ac8c4a9ea1d1ab35f398d, type: 3}
+  x: 4
+  y: 5
+  organs: {fileID: 5578070283621195433, guid: 07173d7b88f9afc4e9cd0dfeccb3dce0, type: 3}

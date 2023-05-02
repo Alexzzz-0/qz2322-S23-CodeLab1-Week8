@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d029a3eadfda535418b998131fb94cae, type: 3}
   m_Name: leftEar
   m_EditorClassIdentifier: 
-  index: 5
   name: left ear
-  x: 0
-  y: 0
-  sprite: {fileID: 0}
+  x: 10
+  y: 10
+  organs: {fileID: 7938215967050978685, guid: b5aa6dd6ea067114b86572017c887fee, type: 3}
